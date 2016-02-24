@@ -19,15 +19,20 @@ end
 
 MyApp.post "/users/process_edit/:id" do
   @user = User.find_by_id(params[:id])
-  @user.name == params["new_name"]
-  @user.email == params["new_email"]
-  @user.password == params["new_password"]
+  @user.name = params["new_name"]
+  @user.email = params["new_email"]
+  @user.password = params["new_password"]
   @user.save
   erb :"users/update_successful"
 
 end 
 
-MyApp.get "/user/delete/:id" do
+MyApp.get "users/delete/:id" do
+  @user = User.find_by_id(params[:id])
+  erb :"users/delete"
+end 
+
+MyApp.post "/user/_processdelete/:id" do
   @user = User.find_by_id(params[:id])
   @user.delete
   erb :"users/update_successful"
