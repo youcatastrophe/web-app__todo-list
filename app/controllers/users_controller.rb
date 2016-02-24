@@ -11,3 +11,8 @@ MyApp.post "/users/create" do
 
   erb :"users/created"
 end 
+
+MyApp.get "/users/edit" do
+  @user = User.find_by_email(params["email"])
+  erb :"users/edit"
+end
