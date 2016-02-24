@@ -12,6 +12,11 @@ MyApp.post "/users/create" do
   erb :"users/created"
 end 
 
+MyApp.get "/users/view_user/:id" do
+  @user = User.find_by_id(params[:id])
+  erb :"users/view_user"
+end
+
 MyApp.get "/users/edit/:id" do
   @user = User.find_by_id(params[:id])
   erb :"users/edit"
