@@ -27,14 +27,13 @@ MyApp.post "/users/process_edit/:id" do
 
 end 
 
-MyApp.get "users/delete/:id" do
+MyApp.get "/users/delete/:id" do
   @user = User.find_by_id(params[:id])
   erb :"users/delete"
 end 
 
-MyApp.post "/user/_processdelete/:id" do
+MyApp.post "/users/process_delete/:id" do
   @user = User.find_by_id(params[:id])
   @user.delete
   erb :"users/update_successful"
-  
 end 
