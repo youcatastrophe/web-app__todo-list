@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: todo-list
+  host: localhost
+test:
+  adapter: postgresql
+  database: todo-list-test
+  host: localhost
