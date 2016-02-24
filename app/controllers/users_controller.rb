@@ -3,16 +3,33 @@ MyApp.get "/users/new" do
 end 
 
 MyApp.post "/users/create" do 
-  @user = User.new
-  @user.name = params["name"]
-  @user.email = params["email "]
-  @user.password = params["password"]
-  @user.save
+  @new_user = User.new
+  @new_user.name = params["name"]
+  @new_user.email = params["email"]
+  @new_user.password = params["password"]
+  @new_user.save
 
   erb :"users/created"
 end 
 
-MyApp.get "/users/edit" do
-  @user = User.find_by_email(params["email"])
+MyApp.get "/users/edit/:id" do
+  @user = User.find_by_id(params[:id])
   erb :"users/edit"
 end
+
+MyApp.post "/users/process_edit/:id" do
+  @user = User.find_by_id(params[:id])
+  @user.name == params["new_name"]
+  @user.email == params["new_email"]
+  @user.password == params["new_password"]
+  @user.save
+  erb :"users/update_successful"
+
+end 
+
+MyApp.get "/user/delete/:id" do
+  @user = User.find_by_id(params[:id])
+  @user.delete
+  erb :"users/update_successful"
+  
+end 
