@@ -4,6 +4,8 @@
 
 <h1>USER INFO</h1>
 
-<p> <%=@user.name %> </p>
+<% if @user != nil %>
+  <p> <%= @user.name %> </p>
 
-<p><%= @user.email %></p>
+  <p><%= @user.email %></p>
+<% end %>
