@@ -1,3 +1,10 @@
+MyApp.before "/todos*" do
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user == nil
+    redirect "/logins/new"
+  end
+end 
+
 MyApp.get "/todos/new" do
   erb :"todos/new"
 end
@@ -9,7 +16,7 @@ MyApp.post "/todos/create" do
   @new_todo.title = params["title"]
   @new_todo.description = params["description"]
   @new_todo.user_id = session["user_id"]
-  @new_todo.assigned_to = params["assigned_to"]
+  @new_todo.assigned_to_id = params["assigned_to"]
   @new_todo.save
 
   redirect "/todos/index"
@@ -36,7 +43,7 @@ MyApp.post "/todos/:id/update" do
     @todo.completed = false
     @todo.title = params["new_title"]
     @todo.description = params["new_description"]
-    @todo.assigned_to = params["new_assigned_to"]
+    @todo.assigned_to_id = params["new_assigned_to_id"]
     @todo.save
     redirect "/todos/index"
 end 

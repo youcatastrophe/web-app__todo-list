@@ -1,3 +1,8 @@
+MyApp.get "/users" do
+  @users = User.all
+  erb :"users/index"
+end
+
 MyApp.get "/users/new" do 
   erb :"users/new"
 end 
@@ -9,8 +14,13 @@ MyApp.post "/users/create" do
   @new_user.password = params["password"]
   @new_user.save
 
-  erb :"users/created"
+  redirect "/users/#{@new_user.id}"
 end 
+
+MyApp.get "/users/:id" do
+  @user = User.find_by_id(params[:id])
+  erb :"users/show"
+end
 
 MyApp.get "/users/view_user/:id" do
   @current_user = User.find_by_id(session["user_id"])
