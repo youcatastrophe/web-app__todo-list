@@ -1,0 +1,18 @@
+<table border="1">
+  <thead>
+    <tr>    
+      <th>List Name</th>
+      <th>Assigned to</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>      
+        <td><%= todo.title%></td>
+        <td><%= todo.assigned_to %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

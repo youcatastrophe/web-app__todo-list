@@ -1,0 +1,13 @@
+see ToDo list here
+<p><%= @todo.title %></p>
+<p><%= @todo.description %></p>
+
+<form action="/todos/<%= @todo.id %>/edit">
+<input type="submit" value="edit">
+</form>
+
+<form action="/todos/<%= @todo.id %>/delete" method="post">
+<input type="submit" value="delete">
+</form>
+
+

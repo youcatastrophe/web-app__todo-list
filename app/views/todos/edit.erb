@@ -1,10 +1,16 @@
 <p> Edit your ToDo list. </p>
 
-<form action="/todos/create" method="post">
+<form action="/todos/<%= @todo.id %>/update" method="post">
   <p> List Name: </p>
-    <input type="text" name="title" value="<%= @todo.title%>"><br>
+    <input type="text" name="new_title" value="<%= @todo.title%>"><br>
+  <p> Assigned To:</p>
+    <input type="text" name="new_assigned_to" value="<%= @todo.assigned_to%>"><br>
   <p> Add things to do </p>
-    <textarea row="8" cols="50" name="description">
+    <textarea row="8" cols="50" name="new_description">
       <%= @todo.description%> </textarea>
     <input type="submit">
+</form>
+
+<form action="/todos/<%= @todo.id %>/delete" method="post">
+<input type="submit" value="delete">
 </form>
