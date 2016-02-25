@@ -16,7 +16,7 @@ MyApp.post "/todos/create" do
   @new_todo.title = params["title"]
   @new_todo.description = params["description"]
   @new_todo.user_id = session["user_id"]
-  @new_todo.assigned_to_id = params["assigned_to"]
+  @new_todo.assigned_to_id = params["assigned_to_id"]
   @new_todo.save
 
   redirect "/todos"
@@ -45,7 +45,7 @@ MyApp.post "/todos/:id/update" do
     @todo.description = params["new_description"]
     @todo.assigned_to_id = params["new_assigned_to_id"]
     @todo.save
-    redirect "/todos/index"
+    redirect "/todos/#{@todo.id}"
 end 
 
 MyApp.post "/todos/:id/delete/" do
