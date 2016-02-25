@@ -1,0 +1,10 @@
+<p> Edit your ToDo list. </p>
+
+<form action="/todos/create" method="post">
+  <p> List Name: </p>
+    <input type="text" name="title" value="<%= @todo.title%>"><br>
+  <p> Add things to do </p>
+    <textarea row="8" cols="50" name="description">
+      <%= @todo.description%> </textarea>
+    <input type="submit">
+</form>

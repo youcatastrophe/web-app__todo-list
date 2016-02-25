@@ -34,15 +34,13 @@ end
 MyApp.post "/todos/process_edit/:id" do
   @current_todo = Todo.find_by_id(session["user_id"])
 
-  if @current_todo != nil 
     @todo = Todo.find_by_id(params[:id]) 
-    @todo.name = params["new_name"]
-    @todo.email = params["new_email"]
-    @todo.password = params["new_password"]
-    @todo.save
-    erb :"todos/update_successful"
-  else
-    erb :"login_first"
+    @new_todo.completed = false
+    @new_todo.title = params["title"]
+    @new_todo.description = params["description"]
+    @new_todo.user_id = session["user_id"]
+    @new_todo.save
+    erb :"todos/created"
   end 
 end 
 
