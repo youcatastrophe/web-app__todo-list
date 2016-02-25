@@ -17,7 +17,7 @@ MyApp.post "/logins/create" do
     if @user.password == params["password"]
       session["user_id"] = @user.id
 
-      erb :"logins/success"
+      redirect "/todos"
     end
   else
       erb :"logins/failed"

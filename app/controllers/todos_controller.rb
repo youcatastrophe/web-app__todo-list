@@ -19,10 +19,10 @@ MyApp.post "/todos/create" do
   @new_todo.assigned_to_id = params["assigned_to"]
   @new_todo.save
 
-  redirect "/todos/index"
+  redirect "/todos"
 end 
 
-MyApp.get "/todos/index" do
+MyApp.get "/todos" do
   @todos = Todo.all
   erb :"todos/index"
 end

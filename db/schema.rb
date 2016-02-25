@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.text     "description"
     t.boolean  "completed"
     t.integer  "user_id"
-    t.integer  "assigned_to"
     t.integer  "assigned_to_id"
   end
 

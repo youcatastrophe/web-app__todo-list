@@ -1,11 +1,19 @@
+MyApp.get "/users/new" do 
+  erb :"users/new"
+end 
+
+MyApp.before "/users*" do
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user == nil
+    redirect "/logins/new"
+  end
+end 
+
 MyApp.get "/users" do
   @users = User.all
   erb :"users/index"
 end
 
-MyApp.get "/users/new" do 
-  erb :"users/new"
-end 
 
 MyApp.post "/users/create" do 
   @new_user = User.new
@@ -31,17 +39,14 @@ end
 MyApp.post "/users/:id/update" do
   @current_user = User.find_by_id(session["user_id"])
 
-  if @current_user != nil 
-    @user = User.find_by_id(params[:id]) 
-    @user.name = params["new_name"]
-    @user.email = params["new_email"]
-    @user.password = params["new_password"]
-    @user.save
+  @current_user != nil 
+  @user = User.find_by_id(params[:id]) 
+  @user.name = params["new_name"]
+  @user.email = params["new_email"]
+  @user.password = params["new_password"]
+  @user.save
 
   redirect "/users/#{user.id}"
-  else
-    erb :"login_first"
-  end 
 end 
 
 MyApp.post "/users/:id/delete/" do
@@ -49,3 +54,5 @@ MyApp.post "/users/:id/delete/" do
   @user.delete
   redirect "/"
 end 
+
+
