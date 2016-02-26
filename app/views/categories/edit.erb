@@ -1,1 +1,8 @@
-edit.erb
+<p>You may make changes to a conference below</p>
+
+<form action="/categories/process_edit/<%= @category.id%>" method="post">
+  <input type="text" name ="edit_conference" value="<%= @category.name %>">
+
+  <input type="submit" value="update">
+
+</form>
