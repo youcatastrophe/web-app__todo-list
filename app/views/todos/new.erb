@@ -8,12 +8,10 @@
   <p> Add things to do </p>
     <textarea row="8" cols="50" name="description">
       Stuff goes here...</textarea>
-    <input type="submit">
-</form>
 
-Category:<br>
+<p>Category:</p>
 
-<select name="new_category_id">
+<select name="category_id">
  <% @categories.each do |c| %>
   <option value="<%= c.id %>"> <%= c.name %></option>
   <% end %>

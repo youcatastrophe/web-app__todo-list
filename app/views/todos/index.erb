@@ -1,23 +1,28 @@
+<p>
+  <a href="/todos/new">Create new ToDo List</a>
+</p>
+
 <table border="1">
   <thead>
     <tr>    
       <th>List Name</th>
-      <th>Assigned to</th>
-
+      <th>Category</th>
+      <th>Description</th>
+      <th>Created by</th>
+      <th>Assigned To</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @todos.each do |todo| %>
-      <tr>      
-        <td><%= todo.title %></td>
-        <td><%= todo.assigned_to_id %></td>
-     </tr>
-    <% end %>
+      <% @todos.each do |todo| %>    
+    <tr>      
+      <td><%= todo.title %></td>
+      <td><%= todo.category_name %></td>
+      <td><%= todo.description %></td>
+      <td><%= todo.user_name %></td>
+      <td><%= todo.assigned_to_name %></td>      
+    </tr>
+      <% end %>
   </tbody>
 </table>
 <br>
-
-<p>
-  <a href="/todos/new">Create new ToDo List</a>
-</p>

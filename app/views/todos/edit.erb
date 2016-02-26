@@ -11,6 +11,18 @@
     <input type="submit">
 </form>
 
+Conference:<br>
+
+<select name="new_category_id">
+ <% @categories.each do |c| %>
+  <option value="<%= c.id %>" <% if c.id == @todo.category_id%> selected <% end %>> <%= c.name %></option>
+  <% end %>
+</select>
+<input type="submit">
+</form>
+
 <form action="/todos/<%= @todo.id %>/delete" method="post">
 <input type="submit" value="delete">
 </form>
+
+
