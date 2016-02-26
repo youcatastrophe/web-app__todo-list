@@ -15,3 +15,7 @@ DB.define_column("todos", "category_id", "integer")
 
 DB.define_table("categories")
 DB.define_column("categories", "name", "string") 
+
+DB.define_table("assignments")
+DB.define_column("assignments", "todo_id", "integer")
+DB.define_column("assignments", "user_id", "integer")

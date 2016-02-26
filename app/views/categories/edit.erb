@@ -1,7 +1,7 @@
-<p>You may make changes to a conference below</p>
+<p>You may make changes to a Category below</p>
 
-<form action="/categories/process_edit/<%= @category.id%>" method="post">
-  <input type="text" name ="edit_conference" value="<%= @category.name %>">
+<form action="/categories/<%= @category.id%>/update" method="post">
+  <input type="text" name ="new_name" value="<%= @category.name %>">
 
   <input type="submit" value="update">
 

@@ -34,7 +34,6 @@ MyApp.get "/categories/:id/edit" do
 end
 
 MyApp.post "/categories/:id/update" do
-
     @category = Category.find_by_id(params[:id]) 
     @category.name = params["new_name"]
     @category.save
@@ -45,4 +44,8 @@ MyApp.post "/categories/:id/delete/" do
   @category = Category.find_by_id(params[:id])
   @category.delete
   redirect "/homepage"
+end 
+
+MyApp.get "/categories/:id/associated_todos" do
+  
 end 

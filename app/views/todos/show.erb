@@ -3,6 +3,7 @@ see ToDo list here
 <p><%= @todo.assigned_to_id %></p>
 <p><%= @todo.description %></p>
 
+
 <form action="/todos/<%= @todo.id %>/edit">
 <input type="submit" value="edit">
 </form>
@@ -10,5 +11,4 @@ see ToDo list here
 <form action="/todos/<%= @todo.id %>/delete" method="post">
 <input type="submit" value="delete">
 </form>
-
 

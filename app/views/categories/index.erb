@@ -1,3 +1,48 @@
-<% @categories.each do |category|%>
-<p><%= category.name %></p>
+<h3>
+   <a href="/">
+    Home
+  </a>
+</h3>
+
+<h1>Categories</h1>
+
+
+<p>
+  <a href="/category/new">
+    Click here to add a new Category
+  </a>
+</p>
+
+<% if @categories.empty? == false %>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Edit/Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |c| %>
+        <tr>
+          <td>
+            <%= c.name %>
+          </td>
+          <td>
+            <form action="/categories/<%= c.id %>/delete" method="post">
+              <input type="submit" value="delete">
+            </form>
+            <a href="/categories/<%= c.id %>/edit">
+              <input type="submit" value="edit">
+            </a>                  
+          </td>        
+        </tr>
+      <% end %>                  
+    </tbody>
+  </table>
+
+
+<% else %>
+<p>There are currently no categories in the system. Click on the link above to create an Category.</p>
 <% end %>

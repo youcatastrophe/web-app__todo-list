@@ -10,3 +10,13 @@
       Stuff goes here...</textarea>
     <input type="submit">
 </form>
+
+Category:<br>
+
+<select name="new_category_id">
+ <% @categories.each do |c| %>
+  <option value="<%= c.id %>"> <%= c.name %></option>
+  <% end %>
+</select>
+<input type="submit">
+</form>

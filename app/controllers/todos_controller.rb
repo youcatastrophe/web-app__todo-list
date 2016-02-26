@@ -6,6 +6,7 @@ MyApp.before "/todos*" do
 end 
 
 MyApp.get "/todos/new" do
+  @categories = Category.all  
   erb :"todos/new"
 end
 
