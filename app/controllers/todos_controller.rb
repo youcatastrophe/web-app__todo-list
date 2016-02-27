@@ -35,6 +35,8 @@ MyApp.get "/todos/:id" do
 end
 
 MyApp.get "/todos/:id/edit" do
+
+  @todos = Todo.all  
   @todo = Todo.find_by_id(params[:id])
   @categories = Category.all
   erb :"todos/edit"

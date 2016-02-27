@@ -4,14 +4,29 @@
   <p> List Name: </p>
     <input type="text" name="new_title" value="<%= @todo.title%>"><br>
   <p> Assigned To:</p>
-    <input type="text" name="new_assigned_to_id" value="<%= @todo.assigned_to_id %>"><br>
+    <% @todos.each do |todo|%>
+      <p>
+        <input type="checkbox"
+        name="new_assigned_to_id[]"
+        value="<%= todo.assigned_to_id %>"
+        <%= "checked" if @
+      </p>
+
+          <option value ="<% todo.assigned_to_id%>"
+            <% if todo.assigned_to_id == @todo.assigned_to_id %> selected 
+            <% end %>>
+              <%= todo.assigned_to_name %>
+          </option>
+        <% end %>
+      </select>
   <p> Add things to do </p>
     <textarea row="8" cols="50" name="new_description">
-      <%= @todo.description%> </textarea>
+        <%= @todo.description %> 
+      </textarea>
     <input type="submit">
 </form>
 
-Conference:<br>
+Categories:<br>
 
 <select name="new_category_id">
  <% @categories.each do |c| %>
