@@ -16,4 +16,10 @@ class Todo < ActiveRecord::Base
     y = User.find_by_id(x)
     y.name
   end 
+
+  def assigned_users
+    x = self.id 
+    y = Assignment.where("todo_id" => x)
+    y 
+  end 
 end

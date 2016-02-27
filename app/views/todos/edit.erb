@@ -9,12 +9,13 @@
         <input type="checkbox"
         name="new_assigned_to_id[]"
         value="<%= todo.assigned_to_id %>"
-        <%= "checked" if @
+        <%= todo.assigned_to_name %>>
       </p>
+    <% end %>
 
           <option value ="<% todo.assigned_to_id%>"
             <% if todo.assigned_to_id == @todo.assigned_to_id %> selected 
-            <% end %>>
+            >
               <%= todo.assigned_to_name %>
           </option>
         <% end %>

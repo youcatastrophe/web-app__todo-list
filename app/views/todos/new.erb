@@ -3,8 +3,16 @@
 <form action="/todos/create" method="post">
   <p> List Name: </p>
     <input type="text" name="title"><br>
-  <p> Assigned To: </p>
-    <input type="text" name="assigned_to_id"><br>    
+  <p> Assigned To:</p>
+    <% @todos.each do |todo|%>
+      <p>
+        <input type="checkbox"
+        name="new_assignment[]"
+        value="<%= todo.assigned_to_id %>"
+        <%= "checked" if @todo.assigned_users.include?(todo) %>
+        <%= todo.user_name %>>
+      </p>
+    <% end %>   
   <p> Add things to do </p>
     <textarea row="8" cols="50" name="description">
       Stuff goes here...</textarea>
